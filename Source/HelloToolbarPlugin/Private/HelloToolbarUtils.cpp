@@ -136,16 +136,8 @@ void HelloToolbarUtils::HighlightPin(SGraphEditor* GraphEditor, const UEdGraphNo
 	GraphPinWidget.SetRenderOpacity(0.5);
 }
 
-//void foo(const FEdGraphEditAction& InAction) {
-//	UE_LOG(LogHelloUtils, Log, TEXT("GraphChanged"));
-//}
-
 void HelloToolbarUtils::CreateActionMenuByNode(SGraphEditor* GraphEditor, UEdGraphNode* GraphNode)
 {
-	//GraphEditor->GetCurrentGraph()->AddOnGraphChangedHandler(FOnGraphChanged::FDelegate::CreateLambda([](const FEdGraphEditAction& InAction) {
-	//	foo(InAction);
-	//	}));
-
 	SGraphPanel* GraphPanel = GraphEditor->GetGraphPanel();
 	SGraphNode& GraphNodeWidget = *GraphPanel->GetNodeWidgetFromGuid(GraphNode->NodeGuid);
 	FVector2D NodePos = GraphNodeWidget.GetCachedGeometry().GetAbsolutePosition();

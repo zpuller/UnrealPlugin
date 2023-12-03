@@ -38,4 +38,6 @@ private:
 
 	bool AddedGraphCallback = false;
 	UEdGraphNode* InputGraphNode = nullptr;
+
+	FDelegateHandle handle;
 };

@@ -63,6 +63,8 @@ void FHelloToolbarPluginModule::CreateNodeImpl(const FEdGraphEditAction& InActio
 	{
 		HelloToolbarUtils::ConnectTwoPins(GraphEditor, InAction.Nodes.Array()[0], InputGraphNode);
 	}
+	GraphEditor->GetCurrentGraph()->RemoveOnGraphChangedHandler(handle);
+	AddedGraphCallback = false;
 }
 
 void FHelloToolbarPluginModule::HandleCreateNode()
@@ -90,7 +92,7 @@ void FHelloToolbarPluginModule::HandleCreateNode()
 	if (!AddedGraphCallback) {
 		AddedGraphCallback = true;
 
-		GraphEditor->GetCurrentGraph()->AddOnGraphChangedHandler(FOnGraphChanged::FDelegate::CreateLambda([this](const FEdGraphEditAction& InAction) {
+		handle = GraphEditor->GetCurrentGraph()->AddOnGraphChangedHandler(FOnGraphChanged::FDelegate::CreateLambda([this](const FEdGraphEditAction& InAction) {
 			this->CreateNodeImpl(InAction);
 			}));
 	}
